@@ -1,0 +1,290 @@
+/* CSS Reset and Custom Properties */
+:root {
+    /* Color Scheme - Feel free to customize */
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --light-text: #6b7280;
+    --background: #ffffff;
+    --light-background: #f3f4f6;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Container */
+    --container-width: 1200px;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Navigation */
+.navbar {
+    display: none; /* Remove navigation */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    margin-top: 0;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, var(--light-background), var(--background));
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
+}
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Visualization Section */
+.visualization-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.visualization-container {
+    width: 100%;
+    margin: var(--spacing-md) auto;
+    transition: all 0.3s ease;
+}
+
+/* About Section */
+.about-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--light-background);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: var(--spacing-md) auto;
+}
+
+/* Footer */
+footer {
+    background: var(--text-color);
+    color: var(--background);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        /* Adjust spacing for mobile */
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    section {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .visualization-container {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Additional responsive improvements */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+/* Smooth scrolling behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: Add fade-in animation for content */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+
+/* Loading animation */
+.loading {
+    position: relative;
+    min-height: 200px;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--light-background);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: loading 0.8s ease infinite;
+}
+
+@keyframes loading {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Visualization container enhancements */
+.visualization-container {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.visualization-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.visualization-content.visible {
+    opacity: 1;
+}
+
+/* Jupyter Notebook Styling */
+.visualization-content {
+    padding: var(--spacing-md);
+}
+
+/* Style Jupyter outputs */
+.jp-OutputArea-output {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Style code cells */
+.jp-CodeCell {
+    background: #f8f9fa;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    margin: var(--spacing-sm) 0;
+}
+
+/* Style markdown cells */
+.jp-MarkdownCell {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Add notebook styling */
+.notebook-content {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.notebook-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.notebook-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.notebook-content th,
+.notebook-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.notebook-content pre {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Loading and error states */
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+} 
