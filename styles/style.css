@@ -1,6 +1,6 @@
 /* CSS Reset and Custom Properties */
 :root {
-    /* Color Scheme */
+    /* Color Scheme - Feel free to customize */
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
     --text-color: #1f2937;
@@ -46,42 +46,56 @@ body {
     padding: 0 var(--spacing-sm);
 }
 
-/* Text Styles */
-h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: var(--spacing-md);
+/* Navigation */
+.navbar {
+    display: none; /* Remove navigation */
 }
 
-h2 {
-    font-size: 2.8rem;
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-}
-
-p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-}
-
-.subtitle {
+.logo {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--primary-color);
 }
 
-/* Sections */
-section {
-    padding: var(--spacing-xl) var(--spacing-md);
-    min-height: 100vh;
+.nav-links {
     display: flex;
-    align-items: center;
-    scroll-snap-align: start;
+    gap: var(--spacing-md);
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
 }
 
 /* Hero Section */
 .hero {
-    padding: calc(var(--spacing-xl) * 2) 0;
-    text-align: center;
+    margin-top: 0;
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, var(--light-background), var(--background));
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+
+.hero .subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Visualization Section */
@@ -90,12 +104,9 @@ section {
 }
 
 .visualization-container {
-    background: var(--background);
-    border-radius: 8px;
-    padding: var(--spacing-md);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin-top: var(--spacing-md);
-    min-height: 400px;
+    width: 100%;
+    margin: var(--spacing-md) auto;
+    transition: all 0.3s ease;
     font-size: 1.2rem;
     line-height: 1.6;
 }
@@ -103,6 +114,7 @@ section {
 /* About Section */
 .about-section {
     padding: var(--spacing-xl) 0;
+    background: var(--light-background);
 }
 
 .about-content {
@@ -121,25 +133,32 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     :root {
+        /* Adjust spacing for mobile */
         --spacing-xl: 2rem;
         --spacing-lg: 1.5rem;
         --spacing-md: 1rem;
     }
 
-    h1 { font-size: 2.8rem; }
-    h2 { font-size: 2.2rem; }
-    p { font-size: 1.1rem; }
-    .subtitle { font-size: 1.3rem; }
+    .hero h1 {
+        font-size: 2.8rem;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero .subtitle {
+        font-size: 1.3rem;
+        padding: 0 var(--spacing-sm);
+    }
 
     section {
         padding: var(--spacing-lg) var(--spacing-sm);
     }
 
-    .container {
-        padding: 0 var(--spacing-md);
+    .visualization-container {
+        padding: var(--spacing-sm);
     }
 }
 
+/* Additional responsive improvements */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
@@ -150,13 +169,12 @@ footer {
     }
 }
 
-/* Utility Classes */
-.text-center { text-align: center; }
-.mt-1 { margin-top: var(--spacing-sm); }
-.mt-2 { margin-top: var(--spacing-md); }
-.mt-3 { margin-top: var(--spacing-lg); }
+/* Smooth scrolling behavior */
+html {
+    scroll-behavior: smooth;
+}
 
-/* Animations */
+/* Optional: Add fade-in animation for content */
 .fade-in {
     opacity: 0;
     transform: translateY(20px);
@@ -169,6 +187,12 @@ footer {
         transform: translateY(0);
     }
 }
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
 
 /* Loading animation */
 .loading {
@@ -195,7 +219,119 @@ footer {
     }
 }
 
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
+/* Visualization container enhancements */
+.visualization-container {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
+
+.visualization-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.visualization-content.visible {
+    opacity: 1;
+}
+
+/* Jupyter Notebook Styling */
+.visualization-content {
+    padding: var(--spacing-md);
+}
+
+/* Style Jupyter outputs */
+.jp-OutputArea-output {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Style code cells */
+.jp-CodeCell {
+    background: #f8f9fa;
+    padding: var(--spacing-sm);
+    border-radius: 4px;
+    margin: var(--spacing-sm) 0;
+}
+
+/* Style markdown cells */
+.jp-MarkdownCell {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Add notebook styling */
+.notebook-content {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.notebook-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.notebook-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.notebook-content th,
+.notebook-content td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.notebook-content pre {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+/* Loading and error states */
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Update text sizes and weights */
+h1 {
+    font-size: 3.5rem;  /* Bigger title */
+    font-weight: 700;   /* Bolder */
+    margin-bottom: var(--spacing-md);
+}
+
+h2 {
+    font-size: 2.8rem;  /* Bigger section headers */
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    font-size: 1.2rem;  /* Bigger paragraph text */
+    line-height: 1.8;   /* More spacing between lines */
+}
+
+.subtitle {
+    font-size: 1.5rem;  /* Bigger subtitle */
+    font-weight: 500;
+}
+
+/* Make visualization text more readable */
+.visualization-container {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    p { font-size: 1.1rem; }
+    .subtitle { font-size: 1.3rem; }
+} 
